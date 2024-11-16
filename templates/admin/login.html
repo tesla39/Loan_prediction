@@ -1,0 +1,66 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container-fluid   " style="height: 100vh; background-color: #ddd; ">
+        <div class="row d-flex  align-items-center"  style="height: 100%; ">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-white  mt-4 " style="padding: 5vh 3vw;">
+                    <form action="/admin/login/superuser" method="post" class="row g-3">
+                        {% csrf_token %}
+                        <h4>Admin Login</h4>
+                        <div class="col-12">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        
+                        <div class="col-12">
+                            <input type="submit" class="btn btn-dark float-end" value="Log In"></input>
+                        </div>
+                    </form>
+                    <hr class="mt-4">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/admin/login.css' %}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form action="/admin/login/superuser" method="POST">
+            {% csrf_token %}
+            <label>Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</body>
+</html>

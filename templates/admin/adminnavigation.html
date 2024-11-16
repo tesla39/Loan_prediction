@@ -1,0 +1,77 @@
+<header></header>
+    <nav class="navbar navbar-expand-xl position-fixed navbar-dark bg-dark w-100">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-2 fw-bold" href="/admin/index">KKR BANK</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="menu-option navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link  fs-5" aria-current="page" href="/admin/index"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="/admin/contact">Contact Us</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="/admin/loan">Loan Prediction</a>
+              </li>
+            </ul>
+             
+            <ul class="navbar-nav" style="width: 8vw">
+              
+
+              {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fs-5"
+                  href=""
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{request.user.username}}
+                </a>
+                <ul
+                  class="dropdown-menu bg-dark"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item text-light" href="/admin/details">Details</a></li>
+                  <li >
+                   
+                    <a class="dropdown-item text-light" href="/admin/logout"
+                      >logout </a
+                    >
+                  </li>
+
+                {% else %}
+              </li>
+              <li class="nav-iteam">
+                <a href="/user/login" class="nav-link"
+                  ><i
+                    class="fa fa-user"
+                    style="font-size: 1.6rem"
+                    aria-hidden="true"
+                  ></i
+                ></a>
+              </li>
+
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>

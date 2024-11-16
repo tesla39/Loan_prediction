@@ -1,0 +1,9 @@
+main{
+    height: 20vh;
+}
+
+
+
+.our-location-map iframe{
+    width: 95%;
+}

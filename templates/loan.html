@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block title %}KKR BANK || USER DETAILS {% endblock %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/loan.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <h2>Loan Prediction Form</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-group">
+                <button type="submit" name="algorithm" value="naive_bayes">Predict Loan Via Naive Bayes</button>
+                <button type="submit" name="algorithm" value="random_forest">Predict Loan Via Random Forest</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Display form errors if any -->
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Display error if any -->
+    {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+</main>
+
+{% endblock %}

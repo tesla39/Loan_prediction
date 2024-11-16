@@ -1,0 +1,78 @@
+
+{% extends 'user/base.html'%}
+
+{% block title %}  User || Login {% endblock %}
+
+{% load static  %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/user/login.css' %}">
+
+
+  
+
+
+{% endblock %}
+
+{% block content %}
+
+<main>
+  <div  class="container-fluids ">
+    {% if messages %}
+        {% for message in messages %}
+        
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+              {{message}}
+            </div>
+          </div>
+
+      {% endfor %}
+
+      {% endif %}
+
+
+    <div class="row w-100 login-table ">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-6 form-part d-flex  justify-content-center align-items-center">
+              <div>
+                  <h3>Login to <span class="logo-name">KKR BANK</span></h3>
+                  <p class="mb-4 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                  <form action="/user/login/loginUser" method="post">
+                    {%csrf_token%}
+                      <div class="mb-3">
+                          <label for="usernameinput" class="form-label">Username</label>
+                          <input type="username" class="form-control" id="usernameinput" aria-describedby="username" placeholder="Your Username" required name="username">
+                        </div>
+                        <div class="mb-3">
+                          <label for="passwordInput" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="passwordInput" aria-describedby="password" placeholder="Your Password" required name="password">
+                        </div>
+                        <div class="mb-5 d-flex justify-content-between form-check">
+                          <div>
+                              <input type="checkbox" class="form-check-input" id="rememberCheck">
+                              <label class="form-check-label text-muted" for="rememberCheck">Remember Me</label>
+                          </div>
+                          <div>
+                              <a href="">Forget Password?</a>
+                          </div>
+                        </div>
+                        <div class="mb-4 d-grid gap-2">
+                          <input type="submit" class="btn btn-primary" value="Log In"></input>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                          <p>Not yet member ?  <a href="/user/register">SignUp Now</a></p>
+                        </div>
+                  </form>
+              </div>
+                
+          </div>
+          <div class="col-lg-6 image-part">
+
+          </div>
+      </div>
+  </div>
+</main>
+
+{%endblock%}

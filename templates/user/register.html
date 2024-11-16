@@ -1,0 +1,68 @@
+
+{% extends 'user/base.html'%}
+
+{% block title %}  A Watcher || Register {% endblock %}
+
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/user/register.css' %}"> {% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 form-part d-flex  justify-content-center align-items-center">
+                <div>
+                    <h3>Register to <span class="logo-name">KRR BANK</span></h3>
+                    <p class="mb-4 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <form action="/user/register/registerUser" method="post" name="register_form" >
+                        {%csrf_token%}
+
+                        <div class="mb-3">
+                            <label for="fullnameInput" class="form-label">Name</label>
+                            <input type="name" class="form-control" id="fullnameInput" aria-describedby="name" placeholder="Full Name" name="fullname" required autofocus>
+                          </div>
+                        <div class="mb-3">
+                            <label for="usernameinput" class="form-label">Username</label>
+                            <input type="username" class="form-control" id="usernameinput" aria-describedby="username" placeholder="Username" name="username" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="phoneInput" class="form-label">Phone Number</label>
+                            <input type="phone" class="form-control" id="phoneInput" aria-describedby="phone" placeholder="Phone Number" name="phonenumber" required >
+                          </div>
+                          <div class="mb-3">
+                            <label for="passwordInput" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="passwordInput" aria-describedby="password" placeholder="Password" name="password" required>
+                          </div>
+                          <div class="mb-3" id="re-passsword">
+                            <label for="repasswordInput" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="passwordInput" aria-describedby="password" placeholder="Confirm Password" name="re-password" required>
+                          </div>    
+                          <div class="mb-5  form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="rememberCheck" required>
+                                <label class="form-check-label text-muted" for="rememberCheck">I agree all <a href="">Tearms of Use </a> & <a href="">Privacy Policy</a> </label>
+                            </div>
+                            
+                          </div>
+                          <div class="mb-3 d-grid gap-2">
+                            <input type="submit" class="btn btn-primary" value="Sign Up"></input>
+                          </div>
+                          <div class="mb-3 text-center">
+                            <p>Already a member ?  <a href="/user/login">Login Now</a></p>
+                          </div>
+                    </form>
+                </div>
+                  
+            </div>
+            <div class="col-lg-6 image-part">
+
+            </div>
+        </div>
+    </div>
+{%endblock%}
+
+{% block js%}
+    <script src="{% static 'js/user/register.js'%}"></script>
+{% endblock %}

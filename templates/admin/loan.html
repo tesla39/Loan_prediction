@@ -1,0 +1,80 @@
+{% extends 'admin/adminindex.html'%}
+
+{% block title %}KKR BANK ||  DETAILS {% endblock %} 
+
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/admin/loan.css' %}"> {% endblock %}
+
+{% block content %}
+
+    
+<main>
+
+
+
+    <h1>User details of Loan Application</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Gender</th>
+                <th>Married</th>
+                <th>Education</th>
+                <th>Income</th>
+                <th>Co_Income</th>
+                <th>Loan Amount</th>
+                <th>Loan Term</th>
+                <th>Credit</th>
+                <th>Property Area</th>
+                <th>Self Employed</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for loan in loans %}
+
+
+        
+
+        <tr>
+            
+            <td>{{loan.user_id.id}}</td>
+            {% for users in user %}
+
+            {% if loan.user_id.id == users.id %}
+            <td>{{ users.first_name }}</td>
+            <td>{{users.email}}</td>
+            {%endif%}     
+            
+      
+
+            {% endfor %}
+            <td>{{loan.gender}}</td>
+            <td>{{loan.married}}</td>
+            <td>{{loan.education}}</td>
+            <td>{{loan.income}}</td>
+            <td>{{loan.co_income}}</td>
+            <td>{{loan.loan}}</td>
+            <td>{{loan.loan_term}}</td>
+            <td>{{loan.credit}}</td>
+            <td>{{loan.property_area}}</td>
+            <td>{{loan.self_employed}}</td>
+
+            
+        </tr>
+
+
+        {% endfor %}
+         
+        </tbody>
+    </table>
+
+
+</main>
+
+
+
+{% endblock %}
