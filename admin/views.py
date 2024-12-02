@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
 from django.contrib import messages
-
 from user.models import LoanModel
 
 

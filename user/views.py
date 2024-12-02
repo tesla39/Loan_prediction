@@ -126,6 +126,14 @@ def loan_prediction(request):
                 prediction = model.predict(data_df)
                 prediction_result = 'Eligible' if prediction == 1 else 'Not Eligible'
             
+            elif algorithm == 'XG_Boost':
+                model = joblib.load('C:/Users/Public.NAWARAJ/Desktop/Code/Django/Loan-Prediction-System-main/user/loan_xgb_model.pkl')
+                #encoder = joblib.load('C:/Users/Public.NAWARAJ/Desktop/Code/Django/Loan-Prediction-System-main/user/label_encoders_xgb.pkl')
+                metrics = joblib.load('C:/Users/Public.NAWARAJ/Desktop/Code/Django/Loan-Prediction-System-main/user/metrics_xgb.pkl')
+                
+                prediction = model.predict(data_df)
+                prediction_result = 'Eligible' if prediction == 1 else 'Not Eligible'
+
             else:
                 raise ValueError("Invalid algorithm selected")
 
