@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login as log
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from user.models import LoanModel
 from user.form import LoanForm
 
 #Imports for Loan prediction
@@ -99,11 +99,12 @@ def loan_prediction(request):
     form = LoanPredictionForm(request.POST or None)
 
     if request.method == 'POST' and form.is_valid():
+        input_data=request.POST
         algorithm = request.POST.get('algorithm')
         try:
             cleaned_data = form.cleaned_data
 
-            # Converting the form data into a DataFrame (or array)
+            
             data_array = np.array(list(cleaned_data.values())).reshape(1, -1)
             data_df = pd.DataFrame(data_array, columns=cleaned_data.keys())
 
@@ -114,7 +115,6 @@ def loan_prediction(request):
                
                 # Scaling the features
                 data_scaled = scaler.transform(data_df)
-                # Prediction
                 prediction = model.predict(data_scaled)
                 prediction_result = 'Eligible' if prediction == 1 else 'Not Eligible'
 
@@ -143,6 +143,7 @@ def loan_prediction(request):
 
             return render(request, "alert.html", {
                 "result": prediction_result,
+                "input_data": input_data,
                 "accuracy": f"{accuracy:.2f}",
                 "classification": classification
             })
@@ -158,25 +159,37 @@ def loan_prediction(request):
 
 @login_required(login_url='/user/login')
 
-
-def addloan(request,uid):
-
+def addloan(request):
+    prediction_result = None
+    #input_data = {}
 
     if request.method == 'POST':
-        # Create a new LoanModel instance with the submitted data
-        loan_instance = LoanForm(
-            request.POST
-        )
+        data = request.POST.dict()  
+        #input_data =request.POST
+        data.pop('csrfmiddlewaretoken', None)
+        prediction_result = data.pop('prediction_result', None)  
+        algorithm = data.pop('algorithm', None) 
 
-        if loan_instance.is_valid():
-            loan_instance.save()
-        # # else:
-        # #     print(loan_instance.errors)
+      
+        loan_data = {
+            'gender': data.get('Gender').lower(),  
+            'married': data.get('Married').lower(),
+            'dependent': int(data.get('Dependents')),
+            'education': data.get('Education').lower(),
+            'self_employed': data.get('Self_Employed').lower(),
+            'income': int(data.get('ApplicantIncome')),
+            'co_income': int(data.get('CoapplicantIncome')),
+            'loan': int(data.get('LoanAmount')),
+            'loan_term': int(data.get('Loan_Amount_Term')),
+            'credit': data.get('Credit_History').lower(), 
+            'property_area': data.get('Property_Area').lower(),
+            'prediction_result': prediction_result,  
+            'algorithm': algorithm 
+        }
 
-
+        # Save the data to the database
+        LoanModel.objects.create(**loan_data)
+   
     return redirect('/index')
-
-
-
 
 

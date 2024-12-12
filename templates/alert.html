@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
+
+    {% load static %}
+    {% block css %} <link rel="stylesheet" href="{% static 'css/user/output.css' %}"> {% endblock %}
+
 </head>
 <body>
-    <h1>Loan Prediction Result</h1>
-    <p><strong>Prediction:</strong> {{ result }}</p>
-    
-    <h2>Model Performance</h2>
-    <p><strong>Accuracy:</strong> {{ accuracy }}</p>
-    
-    <h3>Classification Report:</h3>
-    <pre>{{ classification }}</pre>
+    <div class="container">
+        <h1>Loan Prediction Result</h1>
+        <div class="card">
+            <p class="result"><strong>Prediction:</strong> {{ result }}</p>
+        </div>
+        
+        <h2>Model Performance</h2>
+        <div class="card">
+            <p><strong>Accuracy:</strong> {{ accuracy }}</p>
+        </div>
+        
+        <h3>Classification Report:</h3>
+        <pre>{{ classification }}</pre>
+    </div>
+
+
+    <form action="{% url 'addloan' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="prediction_result" value="{{ result }}">
+        
+        {% for key, value in input_data.items %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}">
+        {% endfor %}
+        
+         {% comment %} You can insert the if statement here to save "only eligible" records {% endcomment %}
+        <button class="save-button">Save Report</button>
+    </div>
+    </form>
 </body>
 </html>

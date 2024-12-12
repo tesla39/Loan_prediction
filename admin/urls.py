@@ -22,13 +22,14 @@ urlpatterns = [
     path('home',views.index),    
     path('index',views.index),
     path('contact',views.contact),  
-
+    
     path('login/superuser',views.login_superuser),
     path('logout',views.log_out),
     path('details',views.details),
     path('delete_user/<int:id>',views.delete_user),
+    path('delete_data/<int:user_id>',views.delete_data),
 
-    path('loan',views.loan),
+    path('loan',views.loan), #handling the loanModel
 
 
 

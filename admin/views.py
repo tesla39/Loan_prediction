@@ -9,9 +9,6 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from user.models import LoanModel
 
-
-
-
 # Create your views here.
 
 
@@ -67,8 +64,14 @@ def delete_user(request,id):
     user=User.objects.all()
     return render(request,'admin/admindetails.html',{'user':user})
 
+@login_required(login_url='/admin')
+def delete_data(request,user_id):
+   data=LoanModel.objects.get(user_id=user_id)
+   data.delete()
+   data=LoanModel.objects.all()
+   return render(request,'admin/loan.html',{'loans':data})
+
 
 def loan(request):
     loans=LoanModel.objects.all()
-    user=User.objects.all()
-    return render(request,'admin/loan.html',{'loans':loans,'user':user})
+    return render(request,'admin/loan.html',{'loans':loans})

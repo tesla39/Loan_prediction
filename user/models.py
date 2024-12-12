@@ -24,7 +24,7 @@ class LoanModel(models.Model):
         ('rural', 'Rural'),
     ]
 
-    id = models.AutoField(primary_key=True)
+    user_id = models.AutoField(primary_key=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     married = models.CharField(max_length=3, choices=MARRIED_CHOICES)
     dependent = models.PositiveIntegerField()
@@ -34,11 +34,11 @@ class LoanModel(models.Model):
     co_income = models.PositiveIntegerField()
     loan = models.PositiveIntegerField()
     loan_term = models.PositiveIntegerField()
-    credit = models.PositiveIntegerField()
+    credit = models.CharField(max_length=3, choices=MARRIED_CHOICES)
     property_area= models.CharField(max_length=20, choices=PROPERTY_AREA_CHOICES)
-      # Make sure this field is defined correctly
-
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    prediction_result = models.CharField(max_length=50) 
+    algorithm = models.CharField(max_length=50)
+    # user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'loan'

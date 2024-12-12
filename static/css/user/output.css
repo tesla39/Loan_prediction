@@ -1,0 +1,116 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f7;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    border-top: 8px solid #c31c2a;
+}
+
+h1 {
+    color: #0e0e0e;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+h2, h3 {
+    color: #34495e;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 1rem;
+    color: #555;
+}
+
+strong {
+    color: #c31c2a;
+}
+
+pre {
+    background: #f7f9fc;
+    padding: 20px;
+    border: 1px solid #d6d9de;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.result {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.card {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fb;
+    border-left: 8px solid #df3843;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Save Button Styles */
+.save-button {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 30px auto;
+    padding: 12px 20px;
+    background-color: #df3843;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.save-button:hover {
+    background-color: #b22b36;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.save-button:active {
+    background-color: #8e202b;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+
+/* General Layout Enhancements */
+.container h1, .container h2, .container h3, .container p {
+    margin-left: 10px;
+}
+
+.container {
+    border: 1px solid #d6d9de;
+}
+
+.card {
+    line-height: 1.6;
+}
+

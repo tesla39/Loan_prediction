@@ -18,8 +18,8 @@
         <thead>
             <tr>
                 <th>User ID</th>
-                <th>Name</th>
-                <th>Phone Number</th>
+                {% comment %} <th>Name</th>
+                <th>Phone Number</th> {% endcomment %}
                 <th>Gender</th>
                 <th>Married</th>
                 <th>Education</th>
@@ -30,28 +30,25 @@
                 <th>Credit</th>
                 <th>Property Area</th>
                 <th>Self Employed</th>
-                
+                <th>Loan Status</th>
+                <th>Algorithm used</th>  
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for loan in loans %}
 
-
-        
-
         <tr>
             
-            <td>{{loan.user_id.id}}</td>
+            {% comment %} <td>{{loan.user_id.id}}</td>
             {% for users in user %}
 
             {% if loan.user_id.id == users.id %}
             <td>{{ users.first_name }}</td>
             <td>{{users.email}}</td>
-            {%endif%}     
-            
-      
-
-            {% endfor %}
+            {%endif%}      
+            {% endfor %}{% endcomment %}
+            <td>{{loan.user_id}}</td>
             <td>{{loan.gender}}</td>
             <td>{{loan.married}}</td>
             <td>{{loan.education}}</td>
@@ -62,8 +59,9 @@
             <td>{{loan.credit}}</td>
             <td>{{loan.property_area}}</td>
             <td>{{loan.self_employed}}</td>
-
-            
+            <td>{{loan.prediction_result}}</td>
+            <td>{{loan.algorithm}}</td>
+            <td><a href="/admin/delete_data/{{loan.user_id}}" class="btn btn-danger">Delete</a></td>
         </tr>
 
 

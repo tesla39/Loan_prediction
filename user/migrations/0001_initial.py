@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='LoanModel',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False)),
+                ('user_id', models.AutoField(auto_created=True, primary_key=True, serialize=False)),
                 ('gender', models.CharField(max_length=20)),
                 ('married', models.CharField(max_length=20)),
                 ('education', models.CharField(max_length=20)),
@@ -28,7 +28,9 @@ class Migration(migrations.Migration):
                 ('loan_term', models.PositiveIntegerField()),
                 ('credit', models.PositiveIntegerField()),
                 ('property', models.CharField(max_length=20)),
-                ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('prediction_result', models.CharField(max_length=50)),
+                ('algorithm', models.CharField(max_length=50)),
+                # ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'db_table': 'loan',
