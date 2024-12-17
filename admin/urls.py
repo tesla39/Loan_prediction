@@ -28,7 +28,6 @@ urlpatterns = [
     path('details',views.details),
     path('delete_user/<int:id>',views.delete_user),
     path('delete_data/<int:user_id>',views.delete_data),
-
     path('loan',views.loan), #handling the loanModel
 
 
